@@ -1,24 +1,24 @@
 walk(document.body);
 
-function walk(node) 
+function walk(node)
 {
 	// I stole this function from here:
 	// http://is.gd/mwZp7E
-	
+
 	var child, next;
-	
+
 	if (node.tagName.toLowerCase() == 'input' || node.tagName.toLowerCase() == 'textarea'
 	    || node.classList.indexOf('ace_editor') > -1) {
 		return;
 	}
 
-	switch ( node.nodeType )  
+	switch ( node.nodeType )
 	{
 		case 1:  // Element
 		case 9:  // Document
 		case 11: // Document fragment
 			child = node.firstChild;
-			while ( child ) 
+			while ( child )
 			{
 				next = child.nextSibling;
 				walk(child);
@@ -32,16 +32,17 @@ function walk(node)
 	}
 }
 
-function handleText(textNode) 
+function handleText(textNode)
 {
 	var v = textNode.nodeValue;
 
-	v = v.replace(/\bThe Cloud\b/g, "My Butt");
-	v = v.replace(/\bThe cloud\b/g, "My butt");
-	v = v.replace(/\bthe Cloud\b/g, "my Butt");
-	v = v.replace(/\bthe cloud\b/g, "my butt");
-	
+	v = v.replace(/\bAntifa\b/g, "Anti-fascists");
+	v = v.replace(/\bantifa\b/g, "anti-fascists");
+	v = v.replace(/\bAlt-right\b/g, "Nazis");
+  v = v.replace(/\bAlt-Right\b/g, "Nazis");
+  v = v.replace(/\bAltright\b/g, "Nazis");
+	v = v.replace(/\balt-right\b/g, "nazis");
+  v = v.replace(/\baltright\b/g, "nazis");
+
 	textNode.nodeValue = v;
 }
-
-
